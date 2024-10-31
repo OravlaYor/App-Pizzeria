@@ -1,7 +1,6 @@
 package com.platzi.pizza.web.controller;
 
 import com.platzi.pizza.Persistence.entity.PizzaEntity;
-import com.platzi.pizza.Persistence.repository.PizzaRepository;
 import com.platzi.pizza.Service.PizzaService;
 import com.platzi.pizza.Service.dto.UpdatePizzaPriceDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,8 +34,8 @@ public class PizzaController {
     }
 
     @GetMapping("/available")
-    public ResponseEntity<Page<PizzaEntity>> getAvailable(@RequestParam(defaultValue = "0") int page
-                                                          ,@RequestParam(defaultValue = "8") int elements,
+    public ResponseEntity<Page<PizzaEntity>> getAvailable(@RequestParam(defaultValue = "0") int page,
+                                                          @RequestParam(defaultValue = "8") int elements,
                                                           @RequestParam(defaultValue = "price") String sortBy,
                                                           @RequestParam( defaultValue = "ASC") String sortDirection) {
         return ResponseEntity.ok(this.pizzaService.getAvailable(page, elements, sortBy,sortDirection));
